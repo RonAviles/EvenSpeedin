@@ -16,6 +16,9 @@ main>.container {
     --dark-color: #292929;
     --white-color: #f0f0f0;
 }
+.even {
+    font-weight: bold;
+}
 
 body {
     color: var(--dark-color);
@@ -79,4 +82,7 @@ pre[class*="language-"] {
     white-space: pre-wrap;
     word-break: break-all;
     word-wrap: break-word;
+}
+.racefont {
+    font-family: 'Racing Sans One', cursive;
 }

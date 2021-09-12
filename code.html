@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>Even Speedin': A Coding Project By Ron Aviles</title>
+    <title>EVEN SPEEDIN': A Coding Project By Ron Aviles</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,6 +18,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png?">
     <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
     <link rel="manifest" href="/img/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
 
 </head>
 
@@ -25,8 +28,8 @@
     <!--nav section-->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/mark.png"
-                    class="border border-2 d-inline-block align-text-top" width="30" height="30"> APP NAME</a>
+            <a class="navbar-brand racefont" href="/index.html"><img src="img/mark.png"
+                    class="border border-2 d-inline-block align-text-top" width="30" height="30"> EVEN SPEEDIN'</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -43,7 +46,7 @@
                         <a class="nav-link active" aria-current="page" href="/code.html">The Code</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                        <a class="nav-link" target="_blank" href="https://github.com/RonAviles/EvenSpeedin">Git Repo</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank" href="#">About</a>
@@ -54,23 +57,76 @@
     </nav>
     <!--main section-->
     <main class="flex-shrink-0">
-        <div class="container py-5 px-5 mt-5">
-            <h2 class="border-1 border-bottom border-dark">The Code for APP NAME.</h2>
-            <div class="row row-cols-1 row-cols-lg-2">
+        <div class="container py-5 px-5 mt-4">
+            <h2 class="border-1 border-bottom border-dark">The Code for <span class="racefont">EVEN SPEEDIN'.</span></h2>
+            <div class="row row-cols-1 row-cols-lg-2  gy-4">
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //Call hello world
-                            function HelloWorld(){
-                            alert("hello world");
-                            }
+                            //get the values from the interface
+//starts controller function
+function getValues() {
+//get values from the page
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+        //parse into integers
+    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+        let numbers = generateNumbers(startValue, endValue);
+        displayNumbers(numbers);
+    } else {
+        alert("You must enter intergers");
+    }
+    //we call generateNumbers
+    //we call displayNumbers
+}
+
+//generate numbers from the startValue to the endValue
+//logic functions
+function generateNumbers(sValue, eValue) {
+    let numbers = [];
+    //we want to get all numbers from start to end
+    //for loop
+    for (let i = sValue; i <= eValue; i++){
+        //this will execute in a loop until i = eValue
+        numbers.push(i);
+    }
+    return numbers;
+}
+//display numbers and mark even numbers bold 
+//display or view function 
+function displayNumbers(numbers) {
+    let templateRows = "";
+    for (let index = 0; index < numbers.length; index++) {
+        let number = numbers[index];
+        let className = "even";
+        if (number % 2 == 0 && number != 0) {
+            className = "even";
+        } else {
+        className = "odd";
+        }
+        //The line below doesn't render correctly with Prism. See the source.  
+        templateRows += `<tr><td class="${className}">${number}</td></tr>`;
+    }
+    document.getElementById("results").innerHTML = templateRows;
+}
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World".</p>
+                    <h4 class="border-bottom mb-3">Code explanation below.</h4>
+                    <h5>getValues()</h5>
+                    <p>The code is broken into separate functions to divide the necessary steps before bringing them back together to display the result onto the page.</p>
+                    <p>The getValues( ) function starts and ends the entire process. Starting by identifying what the user-entered start and end values are, converting them to integers and then validating the data before passing it on to the next step.</p>
+
+                    <h5>generateNumbers()</h5>                    
+                    <p>The generateNumbers( ) function creates an array with every number integer from the start value to the end value (inclusive) and then passes it to the final step.</p>
+
+                    <h5>displayNumbers()</h5>
+                    <p>The displayNumbers( ) function iterates through the array that is passed in. On each iteration it assigns a "class" variable either an even or odd value depending on if the current value in the array that is being accessed is even or odd.</p>
+                    <p>Then it injects the currently accessed number and its corresponding class into the table to be displayed. From here we access the injected class in CSS to change the font-weight to bold for every even value.</p>
+                    
                 </div>
             </div>
         </div>
@@ -87,9 +143,9 @@
                 </div>"
                 <div class="col-12 col-lg d-flex align-items-center justify-content-start justify-content-lg-end">
                     <div class="row">
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <div class="col social"><a href="https://www.linkedin.com/in/ron-aviles/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
                         </div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+                        <div class="col social"><a href="https://github.com/RonAviles/EvenSpeedin" target="_blank"><i class="fab fa-github fa-2x"></i></a>
                         </div>
                         <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
                         </div>
